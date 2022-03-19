@@ -1,0 +1,28 @@
+header {
+  display: flexbox;
+  background-color: greenyellow;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 5rem;
+}
+
+div {
+  display: flexbox;
+  justify-content: center;
+  text-align: center;
+}
+
+div p {
+  font-style: italic;
+  font-size: 2rem;
+}
+
+div button {
+  display: flexbox;
+  align-items: center;
+  width: 12rem;
+  height: 5rem;
+  background-color: aquamarine;
+}

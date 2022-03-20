@@ -28,3 +28,21 @@ var highScores = [];
 var interval;
 var timeGiven = 75;
 var secondsElapsed = 0;
+
+//starts and updates timer
+function startTimer() {
+  timerEl.textContent = timeGiven;
+  interval = setInterval(function () {
+    secondsElapsed++;
+    timerEl.textContent = timeGiven - secondsElapsed;
+    if (secondsElapsed >= timeGiven) {
+      currentQ = questions.length;
+      nextQuestion();
+    }
+  }, 1000);
+}
+
+//stops timer
+function stopTimer() {
+  clearInterval(interval);
+}

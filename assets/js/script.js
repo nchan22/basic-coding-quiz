@@ -134,3 +134,59 @@ function renderHighScores() {
     scoresEl.appendChild(scoreItem);
   }
 }
+//=========================EVENTS================================
+
+//displays high scores
+showHighScoresBtnEl.addEventListener("click", function () {
+  hide(welcomeEl);
+  hide(quizEl);
+  hide(inputScoreEl);
+  renderHighScores();
+  stopTimer();
+  reset();
+});
+
+//starts quiz from  Welcome page
+startQuizBtnEl.addEventListener("click", function () {
+  hide(welcomeEl);
+  startTimer();
+  renderQuestion();
+  show(quizEl);
+});
+
+//Calls to check answer selected and calls to next question if button is clicked
+answersEl.addEventListener("click", function (e) {
+  if (e.target.matches("button")) {
+    checkAnswer(e.target);
+    nextQuestion();
+  }
+});
+
+//Creates a user score object to push to the local storage scores array calls to display high scores
+//calls to render high scores
+submitInitialsBtnEl.addEventListener("click", function () {
+  let initValue = initialsEl.value.trim();
+  if (initValue) {
+    let userScore = { username: initValue, userScore: score };
+    initialsEl.value = "";
+    highScores = JSON.parse(localStorage.getItem("scores")) || [];
+    highScores.push(userScore);
+    localStorage.setItem("scores", JSON.stringify(highScores));
+    hide(inputScoreEl);
+    renderHighScores();
+    reset();
+  }
+});
+
+//Goes back to Welcome page from High scores
+goBackBtnEl.addEventListener("click", function () {
+  hide(highScoresEl);
+  show(welcomeEl);
+});
+
+//Clears saved scores from local storage
+clearScoresBtnEl.addEventListener("click", function () {
+  highScores = [];
+  localStorage.setItem("scores", JSON.stringify(highScores));
+  renderHighScores();
+});

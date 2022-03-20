@@ -104,3 +104,33 @@ function reset() {
   secondsElapsed = 0;
   timerEl.textContent = 0;
 }
+
+//=================== Rendering ================================
+
+//Renders current question
+function renderQuestion() {
+  questionEl.textContent = questions[currentQ].title;
+  for (i = 0; i < answersEl.children.length; i++) {
+    answersEl.children[i].children[0].textContent = `${i + 1}: ${
+      questions[currentQ].choices[i]
+    }`;
+  }
+}
+
+//Renders high scores stored in local storage
+function renderHighScores() {
+  // Clear content
+  scoresEl.innerHTML = "";
+  show(highScoresEl);
+  highScores = JSON.parse(localStorage.getItem("scores"));
+  for (let i = 0; i < highScores.length; i++) {
+    let scoreItem = document.createElement("div");
+    scoreItem.className += "row mb-3 p-2";
+    console.log(scoreItem);
+    scoreItem.setAttribute("style", "background-color:PaleTurquoise;");
+    scoreItem.textContent = `${i + 1}. ${highScores[i].username} - ${
+      highScores[i].userScore
+    }`;
+    scoresEl.appendChild(scoreItem);
+  }
+}

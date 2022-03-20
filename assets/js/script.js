@@ -86,3 +86,21 @@ function displayMessage(m) {
     messageEl.remove();
   }, 2000);
 }
+
+//hides element
+function hide(element) {
+  element.style.display = "none";
+}
+
+//displays element
+function show(element) {
+  element.style.display = "block";
+}
+
+//reset local variables
+function reset() {
+  score = 0;
+  currentQ = 0;
+  secondsElapsed = 0;
+  timerEl.textContent = 0;
+}

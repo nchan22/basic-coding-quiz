@@ -20,7 +20,7 @@ var goBackBtnEl = document.querySelector("#goBack");
 var clearScoresBtnEl = document.querySelector("#clearScores");
 
 //Universal vars =============================================
-var showHighScoresBtnEl = document.querySelector("#showHighScores");
+var viewHScoresBtnEl = document.querySelector("#viewHScores");
 var timerEl = document.querySelector("#timer");
 var score = 0;
 var currentQ = 0;
@@ -134,10 +134,11 @@ function renderHighScores() {
     scoresEl.appendChild(scoreItem);
   }
 }
+
 //=========================EVENTS================================
 
 //displays high scores
-showHighScoresBtnEl.addEventListener("click", function () {
+viewHScoresBtnEl.addEventListener("click", function () {
   hide(welcomeEl);
   hide(quizEl);
   hide(inputScoreEl);

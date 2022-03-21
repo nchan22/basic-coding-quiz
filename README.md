@@ -1,6 +1,4 @@
-# basic-coding-quiz
-
-# Basic Coding Quiz Practice
+# Basic Coding Quiz
 
 ### Purpose:
 

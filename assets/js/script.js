@@ -20,10 +20,10 @@ var goBackBtnEl = document.querySelector("#goBack");
 var clearScoresBtnEl = document.querySelector("#clearScores");
 
 //Universal vars =============================================
-var viewHScoresBtnEl = document.querySelector("#viewHScores");
+var viewHighScoresBtnEl = document.querySelector("#viewHScores");
 var timerEl = document.querySelector("#timer");
 var score = 0;
-var currentQ = 0;
+var currentQuestion = 0;
 var highScores = [];
 var interval;
 var timeGiven = 75;
@@ -36,7 +36,7 @@ function startTimer() {
     secondsElapsed++;
     timerEl.textContent = timeGiven - secondsElapsed;
     if (secondsElapsed >= timeGiven) {
-      currentQ = questions.length;
+      currentQuestion = questions.length;
       nextQuestion();
     }
   }, 1000);
@@ -50,8 +50,8 @@ function stopTimer() {
 //Clears current question and calls for display of next question
 //Calls for input score display if last question
 function nextQuestion() {
-  currentQ++;
-  if (currentQ < questions.length) {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
     renderQuestion();
   } else {
     stopTimer();
@@ -65,7 +65,10 @@ function nextQuestion() {
 
 //checks answer based on current question and updates the user score
 function checkAnswer(answer) {
-  if (questions[currentQ].answer == questions[currentQ].choices[answer.id]) {
+  if (
+    questions[currentQuestion].answer ==
+    questions[currentQuestion].choices[answer.id]
+  ) {
     score += 5;
     displayMessage("Correct!");
   } else {
@@ -74,7 +77,7 @@ function checkAnswer(answer) {
   }
 }
 
-//displays a message for 2 seconds
+//displays a message for 0.65 seconds
 function displayMessage(m) {
   let messageHr = document.createElement("hr");
   let messageEl = document.createElement("div");
@@ -84,7 +87,7 @@ function displayMessage(m) {
   setTimeout(function () {
     messageHr.remove();
     messageEl.remove();
-  }, 2000);
+  }, 650);
 }
 
 //hides element
@@ -100,7 +103,7 @@ function show(element) {
 //reset local variables
 function reset() {
   score = 0;
-  currentQ = 0;
+  currentQuestion = 0;
   secondsElapsed = 0;
   timerEl.textContent = 0;
 }
@@ -109,10 +112,10 @@ function reset() {
 
 //Renders current question
 function renderQuestion() {
-  questionEl.textContent = questions[currentQ].title;
+  questionEl.textContent = questions[currentQuestion].title;
   for (i = 0; i < answersEl.children.length; i++) {
     answersEl.children[i].children[0].textContent = `${i + 1}: ${
-      questions[currentQ].choices[i]
+      questions[currentQuestion].choices[i]
     }`;
   }
 }
@@ -138,7 +141,7 @@ function renderHighScores() {
 //=========================EVENTS================================
 
 //displays high scores
-viewHScoresBtnEl.addEventListener("click", function () {
+viewHighScoresBtnEl.addEventListener("click", function () {
   hide(welcomeEl);
   hide(quizEl);
   hide(inputScoreEl);

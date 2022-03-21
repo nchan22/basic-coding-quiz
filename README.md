@@ -24,6 +24,7 @@ https://nchan22.github.io/basic-coding-quiz/
 ![Alt text](screenshots/screenshot1.jpg)
 ![Alt text](screenshots/screenshot2.jpg)
 ![Alt text](screenshots/screenshot3.jpg)
+![Alt text](screenshots/screenshot4.jpg)
 
 ## Contributors:
 
